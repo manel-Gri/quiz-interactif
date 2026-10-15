@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz Time</title>
+<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Rammetto+One&family=Creepster&family=Pacifico&family=Archivo+Black&family=Press+Start+2P&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"></div>
+<nav>
+  <div class="logo" onclick="go('home')"><i>?!</i> QUIZ</div>
+<div class="links">
+    <a onclick="go('rules')">Regles</a>
+    <a onclick="go('cats')">Categorie</a>
+    <a href="login.html">Login</a>
+</div>
+</nav>
+
+<!-- ACCUEIL -->
+<section class="view on" id="home">
+  <div id="userGreeting">Hi, invité ! 👋</div>
+  <div class="spot l"><div class="lamp"></div><div class="beam"></div></div>
+  <div class="spot r"><div class="lamp"></div><div class="beam"></div></div>
+  <div class="circle"><div class="tri"></div><h1>Quiz</h1><h2>TIME</h2></div>
+  <button class="start" onclick="go('cats')">START</button>
+</section>
+
+<!-- REGLES -->
+<section class="view" id="rules">
+  <div class="title">COMMENT ÇA MARCHE ?</div>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><p>Choisis un thème<br>Sélectionne la catégorie qui te ressemble.</p></div>
+    <div class="step"><div class="n">2</div><p>Réponds avant la fin du temps<br>Chaque question a un chrono. Plus tu es rapide, plus tu gagnes de points.</p></div>
+    <div class="step"><div class="n">3</div><p>Découvre ton score<br>Un résultat final et un message à ta hauteur : débutant ou légende ?</p></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="view" id="cats">
+  <div class="title">CHOISIS UN THÈME</div>
+  <div class="cats" id="catList"></div>
+</section>
+
+<!-- QUIZ -->
+<section class="view" id="quiz">
+  <div class="hud"><span id="qNum"></span><span id="timer"></span><span id="score"></span></div>
+  <div class="bar"><div id="barIn"></div></div>
+  <div class="q" id="qText"></div>
+  <div class="row">
+    <div class="arrow prev" onclick="nav(-1)" title="Précédent"></div>
+    <div class="hand" id="hand"></div>
+    <div class="arrow next" onclick="nav(1)" title="Suivant"></div>
+  </div>
+</section>
+
+<!-- FEEDBACK : message seulement -->
+<section class="view" id="fb" onclick="nextQ()">
+  <div class="fbbox" id="fbBox"><div class="fbmsg" id="fbMsg"></div></div>
+  <button class="start" onclick="event.stopPropagation();nextQ()">SUIVANT</button>
+</section>
+
+<!-- RESULTAT -->
+<section class="view" id="res">
+  <div class="title">TON SCORE</div>
+  <div class="big" id="finalScore"></div>
+  <div class="msg" id="finalMsg"></div>
+  <h2>🏆 Classement des joueurs</h2>
+  <div id="leaderboardList"></div>
+  <button class="start" onclick="go('cats')">REJOUER</button>
+</section>
+<script src="script.js"></script>
+</body>
+</html>
